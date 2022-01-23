@@ -19,9 +19,5 @@ Route::get('/', function () {
 });
 
 
-Route::post('/saveItemRoute', function () {
-    return view('welcome');
-})->name('saveItem');
-
 
 Route::post('/saveItemRoute', [TodoListController::class, 'saveItem'])->name('saveItem');
