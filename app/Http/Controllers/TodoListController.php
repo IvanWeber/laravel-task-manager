@@ -12,6 +12,11 @@ class TodoListController extends Controller
         return view('welcome', ['listItems' => ListItem::all()]);
     }
 
+    public function markComplete($id) {
+        \Log::info($id);
+        return view('welcome', ['listItems' => ListItem::all()]);
+    }
+
     public function saveItem (Request $request) {
         \Log::info(json_encode($request->all()));
         $newListItem = new ListItem;

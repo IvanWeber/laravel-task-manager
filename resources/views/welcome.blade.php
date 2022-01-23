@@ -28,7 +28,18 @@
             <h1>todo list</h1>
 
             @foreach ($listItems as $listItem)
-                <p>Item: {{ $listItem->name }}</p>
+                <div class="flex" style="align-items: center;">
+
+                    <p>Item: {{ $listItem->name }}</p>
+
+                    <form method="post" action="{{ route('markComplete', $listItem->id) }}" accept-charset="UTF-8">
+                    {{ csrf_field() }}
+                    <button type="submit" style="max-height: 25px; margin-left: 20px;">Mark Complete</button>
+
+                    </form>
+
+
+                </div>
             @endforeach
 
             <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
