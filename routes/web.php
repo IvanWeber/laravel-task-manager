@@ -14,9 +14,7 @@ use App\Http\Controllers\TodoListController;
 |
 */
 
-Route::get('/', function () {
-   return view('welcome');
-});
+Route::get('/', [TodoListController::class, 'index']);
 
 
 
