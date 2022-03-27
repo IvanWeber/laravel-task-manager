@@ -30,13 +30,21 @@
             @foreach ($listItems as $listItem)
                 <div class="flex" style="align-items: center;">
 
-                    <p>Item: {{ $listItem->name }}</p>
+                    <p>Task-title: {{ $listItem->title }} </p></br>
+                    <p>Task-desc: {{ $listItem->description }} </p></br>
+                    <p>Status: {{ $listItem->is_complete }} </p>
 
                     <form method="post" action="{{ route('markComplete', $listItem->id) }}" accept-charset="UTF-8">
                     {{ csrf_field() }}
                     <button type="submit" style="max-height: 25px; margin-left: 20px;">Mark Complete</button>
-
                     </form>
+
+                    <form method="post" action="{{ route('markUncomplete', $listItem->id) }}" accept-charset="UTF-8">
+                    {{ csrf_field() }}
+                    <button type="submit" style="max-height: 25px; margin-left: 20px;">Mark Uncomplete</button>
+                    </form>
+
+                    
 
 
                 </div>
@@ -45,8 +53,14 @@
             <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
                 {{ csrf_field() }}
 
-                <label for="listItem">New Todo Item</label></br>
-                <input type="text" name="listItem"></br>
+                <label for="taskTitle">Task title</label></br>
+                <input type="text" name="taskTitle"></br>
+                <label for="taskDesc">Task description</label></br>
+                <input type="text" name="taskDesc"></br>
+                <label for="nameExec">Executor name</label></br>
+                <input type="text" name="nameExec"></br>
+                <label for="deadline">Executor name</label></br>
+                <input type="date" name="deadline"></br>
                 <button type="submit">Save Item</button>
 
             </form>

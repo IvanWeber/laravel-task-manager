@@ -15,9 +15,12 @@ class CreateListItemsTable extends Migration
     {
         Schema::create('list_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('is_complete');
+            $table->string('title');
+            $table->string('name_executor');
+            $table->string('description');
+            $table->date('deadline');
             $table->timestamps();
+            $table->integer('is_complete');
         });
     }
 

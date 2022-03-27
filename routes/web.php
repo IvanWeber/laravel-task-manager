@@ -22,3 +22,5 @@ Route::post('/saveItemRoute', [TodoListController::class, 'saveItem'])->name('sa
 
 Route::post('/markCompleteRoute/{id}', [TodoListController::class, 'markComplete'])->name('markComplete');
 
+Route::post('/markUncompleteRoute/{id}', [TodoListController::class, 'markUncomplete'])->name('markUncomplete');
+
