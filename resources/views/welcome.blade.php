@@ -44,7 +44,12 @@
                     <button type="submit" style="max-height: 25px; margin-left: 20px;">Mark Uncomplete</button>
                     </form>
 
-                    
+                    <form method="post" action="{{ route('removeTask', $listItem->id) }}" accept-charset="UTF-8">
+                    {{ csrf_field() }}
+                    <button type="submit" style="max-height: 25px; margin-left: 20px;">Remove Task</button>
+                    </form>
+
+
 
 
                 </div>

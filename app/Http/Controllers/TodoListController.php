@@ -35,6 +35,16 @@ class TodoListController extends Controller
         return redirect('/');
     }
 
+    public function removeTask($id) {
+
+        $listItem = ListItem::find($id);
+        \Log::info($listItem);
+
+        $listItem->delete();
+
+        return redirect('/');
+    }
+
     public function saveItem (Request $request) {
         \Log::info(json_encode($request->all()));
         $newListItem = new ListItem;
