@@ -27,12 +27,75 @@
 
             <h1>todo list</h1>
 
+            <!-- {{$errors}} -->
+
             @foreach ($listItems as $listItem)
                 <div class="flex" style="align-items: center;">
 
                     <p>Task-title: {{ $listItem->title }} </p></br>
                     <p>Task-desc: {{ $listItem->description }} </p></br>
-                    <p>Status: {{ $listItem->is_complete }} </p>
+                    <p>Status: {{ $listItem->status }} </p>
+
+
+
+
+
+                    <form method="post" action="{{ route('changeTask', $listItem->id) }}" accept-charset="UTF-8">
+
+                        {{ csrf_field() }}
+                        <select name="taskStatus">
+
+                            @if ($listItem->status === "Добавлена")
+                                <option>Добавлена</option>
+                                <option>В работе</option>
+                                <option>Завершена</option>
+                            @endif
+
+                            @if ($listItem->status === "В работе")
+                                <option>В работе"</option>
+                                <option>Добавлена</option>
+                                <option>Завершена</option>
+                            @endif
+
+                            @if ($listItem->status === "Завершена")
+                                <option>Завершена</option>
+                                <option>Добавлена</option>
+                                <option>В работе</option>
+                            @endif
+
+
+
+                        </select>
+
+                        <select name="nameExec">
+
+                            @foreach ($listUsers as $listUser)
+
+                                @if ($listUser->user_name === $listItem->name_executor)
+                                    <option>{{ $listUser->user_name }}</option>
+                                @endif
+
+                            @endforeach
+
+
+
+                            @foreach ($listUsers as $listUser)
+
+                                @if ($listUser->user_name !== $listItem->name_executor)
+                                    <option>{{ $listUser->user_name }}</option>
+                                @endif
+
+                            @endforeach
+
+                        </select>
+
+
+
+                        <button type="submit" style="max-height: 25px; margin-left: 20px;">Change Task</button>
+
+                    </form>
+
+
 
                     <form method="post" action="{{ route('markComplete', $listItem->id) }}" accept-charset="UTF-8">
                     {{ csrf_field() }}
@@ -55,6 +118,20 @@
                 </div>
             @endforeach
 
+
+
+            @if ($errors->any())
+
+                <div>
+                    <ul>
+                    @foreach($errors->all() as $err)
+                        <li>{{$err}}</li>
+                    @endforeach
+                    </ul>
+                </div>
+
+            @endif
+
             <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
                 {{ csrf_field() }}
 
@@ -62,11 +139,23 @@
                 <input type="text" name="taskTitle"></br>
                 <label for="taskDesc">Task description</label></br>
                 <input type="text" name="taskDesc"></br>
-                <label for="nameExec">Executor name</label></br>
-                <input type="text" name="nameExec"></br>
+                <!-- <label for="nameExec">Executor name</label></br>
+                <input type="text" name="nameExec"></br> -->
                 <label for="deadline">Executor name</label></br>
                 <input type="date" name="deadline"></br>
+                <select name="nameExec">
+
+                    @foreach ($listUsers as $listUser)
+                        <option>{{ $listUser->user_name }}</option>
+                    @endforeach
+                </select>
+
+
+
+
                 <button type="submit">Save Item</button>
+
+
 
             </form>
 

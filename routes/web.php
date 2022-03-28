@@ -26,3 +26,5 @@ Route::post('/markUncompleteRoute/{id}', [TodoListController::class, 'markUncomp
 
 Route::post('/removeTaskRoute/{id}', [TodoListController::class, 'removeTask'])->name('removeTask');
 
+Route::post('/changeTaskRoute/{id}', [TodoListController::class, 'changeTask'])->name('changeTask');
+

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateListItemsTable extends Migration
+class CreateListUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateListItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('list_items', function (Blueprint $table) {
+        Schema::create('list_users', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('name_executor');
-            $table->string('description');
-            $table->date('deadline');
-            $table->timestamps();
-            $table->string('status');
+            $table->string('user_name');
         });
     }
 
@@ -31,6 +26,6 @@ class CreateListItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('list_items');
+        Schema::dropIfExists('list_users');
     }
 }
