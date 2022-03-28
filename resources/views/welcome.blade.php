@@ -46,19 +46,19 @@
                         <select name="taskStatus">
 
                             @if ($listItem->status === "Добавлена")
-                                <option>Добавлена</option>
+                                <option selected>Добавлена</option>
                                 <option>В работе</option>
                                 <option>Завершена</option>
                             @endif
 
                             @if ($listItem->status === "В работе")
-                                <option>В работе"</option>
+                                <option selected>В работе</option>
                                 <option>Добавлена</option>
                                 <option>Завершена</option>
                             @endif
 
                             @if ($listItem->status === "Завершена")
-                                <option>Завершена</option>
+                                <option selected>Завершена</option>
                                 <option>Добавлена</option>
                                 <option>В работе</option>
                             @endif
